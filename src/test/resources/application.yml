@@ -1,0 +1,10 @@
+webdriver:
+  chrome: drivers/chromedriver.exe
+
+newspapers:
+  env: "https://www.newspapers.com/"
+  email: "lourdes100@test.com"
+  password: "Test123!"
+
+browser: "chrome"
+
