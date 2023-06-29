@@ -5,7 +5,7 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(publish = false,
+@CucumberOptions(publish = true,
 
         glue = {
                 "com.newspapers",
