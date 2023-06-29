@@ -18,7 +18,8 @@
 #  Scenario Outline: POST request adds new user to users list
 #    Given existing Server application
 #    Then adding new user <name> with email <email> it returns expected response <response>
-#
+
+  
 #    Examples:
 #      | name      | email                 | response                                        |
 #      | clark     | clark@codility.com    | clark with an email clark@codility.com added    |
