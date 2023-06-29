@@ -84,9 +84,9 @@ public class NewspapersTestConfig {
     @DependsOn("chromeOptions")
     public WebDriver webDriver() throws Exception {
         if (browser.equals("chrome")) {
-            WebDriverManager.chromedriver().setup();
-            webDriver = new ChromeDriver(chromeOptions);
-//            webDriver = new RemoteWebDriver(new URL(newspapersHost), chromeOptions);
+//            WebDriverManager.chromedriver().setup();
+//            webDriver = new ChromeDriver(chromeOptions);
+            webDriver = new RemoteWebDriver(new URL(newspapersHost), chromeOptions);
 
         }
         return webDriver;
