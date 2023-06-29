@@ -28,7 +28,7 @@ public class BasePage {
     }
 
     public void clickElement(By locator) {
-        fluentWaitLocator(locator);
+//        fluentWaitLocator(locator);
         explicitElementToBeClickable(locator);
         webDriver.findElement(locator).click();
     }

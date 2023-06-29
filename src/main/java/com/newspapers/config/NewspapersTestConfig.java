@@ -7,10 +7,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.core.env.Environment;
+
+import java.net.URL;
 
 public class NewspapersTestConfig {
 
@@ -28,7 +31,14 @@ public class NewspapersTestConfig {
     protected String newspapersEmail;
     @Autowired
     protected String newspapersPass;
+    @Autowired
+    protected String newspapersHost;
 
+    @Bean
+    public String newspapersHost() {
+        newspapersHost = environment.getProperty("newspapers.host");
+        return newspapersHost;
+    }
     @Bean
     public String newspapersEmail() {
         newspapersEmail = environment.getProperty("newspapers.email");
@@ -57,6 +67,7 @@ public class NewspapersTestConfig {
     public ChromeOptions chromeOptions() {
 
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--window-size=1920,1080");
         options.addArguments("disable-infobars");
         options.addArguments("--disable-notifactions");
         options.addArguments("--ignore-ssl-errors=yes");
@@ -73,8 +84,10 @@ public class NewspapersTestConfig {
     @DependsOn("chromeOptions")
     public WebDriver webDriver() throws Exception {
         if (browser.equals("chrome")) {
-            WebDriverManager.chromedriver().setup();
-            webDriver = new ChromeDriver(chromeOptions);
+//            WebDriverManager.chromedriver().setup();
+//            webDriver = new ChromeDriver(chromeOptions);
+            webDriver = new RemoteWebDriver(new URL(newspapersHost), chromeOptions);
+
         }
         return webDriver;
     }

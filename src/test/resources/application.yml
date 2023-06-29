@@ -5,6 +5,7 @@ newspapers:
   env: "https://www.newspapers.com/"
   email: "lourdes100@test.com"
   password: "Test123!"
+  host: "http://localhost:4444/wd/hub"
 
 browser: "chrome"
 
