@@ -13,7 +13,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.core.env.Environment;
 
+import java.net.URI;
 import java.net.URL;
+
 
 public class NewspapersTestConfig {
 
@@ -86,7 +88,7 @@ public class NewspapersTestConfig {
         if (browser.equals("chrome")) {
 //            WebDriverManager.chromedriver().setup();
 //            webDriver = new ChromeDriver(chromeOptions);
-            webDriver = new RemoteWebDriver(new URL(newspapersHost), chromeOptions);
+            webDriver = new RemoteWebDriver(new URI(newspapersHost).toURL(), chromeOptions);
 
         }
         return webDriver;
